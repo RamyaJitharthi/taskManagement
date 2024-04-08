@@ -1,0 +1,40 @@
+<div style = "position:absolute;
+right:30px;
+top:60px;">
+    <button type="button" routerLink="/task-form" class="btn btn-primary">Add Task</button>
+</div>
+
+<div>
+  
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        @for(task of tasks; track $index) {
+        <tbody>          
+          <tr>
+            <td>
+              <button class="btn btn-default btn-sm btn-success me-2" (click) = "taskDone(task.key)"><i class="bi bi-check2-square"></i></button>
+            </td>
+            <th scope="row">{{task.title}}</th>
+            <td>{{task.description}}</td>
+            <td>{{task.duedate}}</td>
+            <td>{{task.status}}</td>
+            <td>
+              <button class="btn btn-default btn-sm btn-outline-success me-2" (click) = "editTask(task.key)"><i class="bi bi-pen"></i></button>
+              
+              <button class="btn btn-default btn-sm btn-outline-danger me-2" (click) = "deleteTask(task.key)">
+                <i class="bi bi-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      }
+      </table>
+</div>
